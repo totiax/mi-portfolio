@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { init, send } from "@emailjs/browser"; // Cambiamos la importación
+import { init, send } from "@emailjs/browser";
 import styles from "./Contact.module.scss";
 import { Metadata } from "next";
 import Script from "next/script";
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Contact Page",
   description: "Contact form page",
 };
-// Declaración de tipos global
+
 declare global {
   interface Window {
     grecaptcha: {
@@ -22,20 +22,13 @@ declare global {
   }
 }
 
-// Inicializa EmailJS con tu Public Key
 init("u6ltrA3togxUryjt5");
 
-// Definimos interfaces para tipar nuestros datos
 interface FormData {
   nombre: string;
   email: string;
   telefono: string;
   mensaje: string;
-}
-
-interface EmailJSResponse {
-  status: number;
-  text: string;
 }
 
 export default function Contact() {
@@ -45,15 +38,6 @@ export default function Contact() {
     telefono: "",
     mensaje: "",
   });
-
-  const [responseMessage, setResponseMessage] = useState<string>("");
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
   const [toast, setToast] = useState<{
     show: boolean;
@@ -65,6 +49,13 @@ export default function Contact() {
     type: "success",
   });
 
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -75,9 +66,7 @@ export default function Contact() {
       try {
         const token = await window.grecaptcha.execute(
           "6LeWmzwrAAAAALJEb7WDTvKLtmznN5ARpGbIUwqY",
-          {
-            action: "submit",
-          }
+          { action: "submit" }
         );
 
         const result = await send(
@@ -121,7 +110,7 @@ export default function Contact() {
     <section className={styles.contact_section}>
       <Script
         src={`https://www.google.com/recaptcha/api.js?render=6LeWmzwrAAAAALJEb7WDTvKLtmznN5ARpGbIUwqY`}
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
       />
       {toast.show && (
         <Toast
@@ -217,9 +206,6 @@ export default function Contact() {
                   <button type="submit">Enviar</button>
                 </div>
               </form>
-              {responseMessage && (
-                <div className={styles.responseMessage}>{responseMessage}</div>
-              )}
             </div>
           </div>
         </div>

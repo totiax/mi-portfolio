@@ -9,11 +9,7 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
-interface FooterProps {
-  className?: string; // El ? significa que es opcional
-}
-
-export default function Footer({ className = "" }: FooterProps) {
+export default function Footer() {
   const [year, setYear] = useState<number | null>(null);
 
   useEffect(() => {

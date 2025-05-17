@@ -7,7 +7,6 @@ import Services from "@/components/Services/Services";
 import Portfolio from "../Portfolio/Portfolio";
 import Skills from "@/components/Skills/Skills";
 import Contact from "@/components/Contact/Contact";
-import Navigation from "./Navigation";
 import { Section } from "./types";
 import styles from "./FullPageScrol.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
@@ -86,7 +85,6 @@ export default function FullPageScroll() {
   const handleLoadingComplete = () => {
     setShowContent(true);
   };
-  const isLastSection = currentSection === sections.length - 1;
   return (
     <>
       <div className={styles.backgroundFixed}>
