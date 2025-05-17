@@ -1,0 +1,123 @@
+.headerVertical {
+  position: fixed;
+  top: 50%;
+  left: 32px;
+  transform: translateY(-50%);
+  z-index: 100;
+  background: rgba(20, 20, 30, 0.7);
+  backdrop-filter: blur(12px);
+  border-radius: 32px;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.12);
+  padding: 1.5rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (max-width: 700px) {
+    /* Cambios para mobile */
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(0);
+    flex-direction: row; /* Cambiar a horizontal */
+    justify-content: center; /* Centrar elementos horizontalmente */
+    padding: 0.7rem 1.5rem;
+    border-radius: 0 0 32px 32px; /* Redondear solo esquinas inferiores */
+    width: 100%;
+  }
+}
+
+.navIcon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  font-size: 1.3rem;
+  cursor: pointer;
+  position: relative;
+
+  @media (max-width: 700px) {
+    width: 25px;
+    height: 25px;
+  }
+
+  svg {
+    @media (max-width: 700px) {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background: rgba(79, 195, 247, 0.15);
+    color: #64ffda;
+  }
+
+  &.active {
+    background: #64ffda;
+    color: #181818;
+    box-shadow: 0 2px 12px #64ffda;
+    animation: pulse 1.5s infinite;
+  }
+
+  .tooltip {
+    position: absolute;
+    left: 120%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #222;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+    @media (max-width: 700px) {
+      /* Ajustar tooltip para mobile */
+      left: 50%;
+      top: 120%;
+      transform: translateX(-50%);
+
+      &:hover,
+      &:focus {
+        transform: translateX(-50%) translateY(8px);
+      }
+    }
+  }
+
+  &:hover .tooltip,
+  &:focus .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(8px);
+
+    @media (max-width: 700px) {
+      transform: translateX(-50%) translateY(8px);
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #4fc3f7aa;
+  }
+  70% {
+    box-shadow: 0 0 0 12px #4fc3f733;
+  }
+  100% {
+    box-shadow: 0 0 0 0 #4fc3f7aa;
+  }
+}

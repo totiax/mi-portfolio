@@ -1,0 +1,25 @@
+.section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.entering {
+    animation: fadeInSection 0.7s forwards;
+  }
+}
+
+@keyframes fadeInSection {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

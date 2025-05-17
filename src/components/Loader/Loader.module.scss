@@ -1,0 +1,40 @@
+.loaderWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000; /* Cambia el color de fondo aquí */
+  z-index: 99999;
+}
+.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader {
+  width: 80px;
+  aspect-ratio: 1;
+  border: 10px solid transparent;
+  box-sizing: border-box;
+  background: radial-gradient(farthest-side, #64ffda 98%, transparent) 0 0/20px
+      20px,
+    /* Cambia el color de los puntos aquí */
+      radial-gradient(farthest-side, #64ffda 98%, transparent) 100% 0/20px 20px,
+    radial-gradient(farthest-side, #64ffda 98%, transparent) 100% 100%/20px 20px,
+    radial-gradient(farthest-side, #64ffda 98%, transparent) 0 100%/20px 20px,
+    linear-gradient(#64ffda 0 0) 50%/40px 40px,
+    /* Cambia el color de la línea central aquí */ #141414; /* Cambia el color de fondo del loader aquí */
+  background-repeat: no-repeat;
+  filter: blur(4px) contrast(10);
+  animation: l12 0.8s infinite;
+}
+
+@keyframes l12 {
+  100% {
+    background-position: 100% 0, 100% 100%, 0 100%, 0 0, center;
+  }
+}

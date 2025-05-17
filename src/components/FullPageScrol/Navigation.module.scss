@@ -1,0 +1,140 @@
+// Navigation.module.scss
+.navigation {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.dotsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+}
+
+.dot {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  .dotContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: transparent;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+    }
+  }
+
+  .tooltip {
+    position: absolute;
+    right: calc(100% + 20px);
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    font-size: 14px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  &:hover {
+    .dotContent {
+      transform: translate(-50%, -50%) scale(1.2);
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-50%) translateX(-5px);
+    }
+  }
+
+  &.active {
+    .dotContent {
+      width: 10px;
+      height: 10px;
+      background: #4fc3f7;
+      transform: translate(-50%, -50%) scale(1);
+
+      &::before {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        background: #4fc3f7;
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+
+  70% {
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+  }
+
+  100% {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+}
+
+// Media query para dispositivos móviles
+@media (max-width: 768px) {
+  .navigation {
+    right: 15px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+
+    .dotContent {
+      width: 6px;
+      height: 6px;
+    }
+
+    &.active .dotContent {
+      width: 8px;
+      height: 8px;
+    }
+
+    .tooltip {
+      display: none;
+    }
+  }
+}

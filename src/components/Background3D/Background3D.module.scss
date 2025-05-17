@@ -1,0 +1,41 @@
+// Background3D.module.scss
+.bg3d {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(ellipse at 60% 40%, #23243a 0%, #111218 100%);
+  overflow: hidden;
+}
+
+.spotlight {
+  position: absolute;
+  left: 50%; // Centro horizontal
+  transform: translateX(-50%); // Centra perfectamente
+  width: 40vw; // Tamaño del círculo
+  height: 40vw; // Igual que el width para hacer un círculo perfecto
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,255,240,0.18) 0%, transparent 80%);
+  filter: blur(48px);
+  transition: top 0.5s, opacity 0.5s;
+  opacity: 0.8;
+  pointer-events: none;
+  animation: spinSpotlight 12s ease-in-out infinite;
+}
+
+@keyframes spinSpotlight {
+  0% { 
+    rotate: 0deg;
+    filter: blur(48px) brightness(0.7);
+  }
+  50% {
+    rotate: 180deg;
+    filter: blur(48px) brightness(1.3);
+  }
+  100% { 
+    rotate: 360deg;
+    filter: blur(48px) brightness(0.7);
+  }
+}

@@ -1,0 +1,120 @@
+// Footer.module.scss
+.footer {
+  position: fixed;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  background: rgba(20, 20, 30, 0.7);
+  backdrop-filter: blur(12px);
+  border-radius: 32px;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.12);
+  padding: 2rem 1.5rem;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .socialLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    a {
+      color: #fff;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+
+      &:hover {
+        background: rgba(79, 195, 247, 0.15);
+        color: #64ffda;
+        transform: scale(1.1);
+      }
+
+      // Tooltip
+      &::after {
+        content: attr(aria-label);
+        position: absolute;
+        right: 120%;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #222;
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease;
+        pointer-events: none;
+      }
+
+      &:hover::after {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(-50%) translateX(-8px);
+      }
+    }
+  }
+
+  .copyright {
+    color: #fff;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    text-align: center;
+    margin: 0;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    // Cambios para mobile
+    right: 0;
+    left: 0;
+    top: auto;
+    bottom: 0;
+    transform: none;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 32px 32px 0 0; // Redondear solo esquinas superiores
+
+    .container {
+      flex-direction: row; // Cambiar a horizontal
+      justify-content: space-around;
+      gap: 1rem;
+    }
+
+    .socialLinks {
+      flex-direction: row; // Cambiar a horizontal
+      gap: 1.5rem;
+
+      a {
+        font-size: 1.2rem;
+        width: 32px;
+        height: 32px;
+
+        &::after {
+          display: none; // Ocultar tooltips en móvil
+        }
+      }
+    }
+
+    .copyright {
+      writing-mode: horizontal-tb; // Volver a texto horizontal
+      transform: none;
+      font-size: 0.7rem;
+    }
+  }
+}

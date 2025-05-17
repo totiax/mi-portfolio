@@ -1,0 +1,80 @@
+.card {
+  background: #232536;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  padding: 2rem 1.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  min-width: 240px;
+  position: relative;
+  transition: 0.3 all ease-in-out;
+  // NO height fija aquí
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon {
+  font-size: 2.5rem;
+  color: #64ffda;
+  flex-shrink: 0;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.title {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  flex: 1;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.chevron {
+  color: #64ffda;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+  transition: transform 0.3s;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+.rotate {
+  transform: rotate(180deg);
+}
+
+.content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s, opacity 0.3s, margin-top 0.3s;
+  margin-top: 0; // <--- valor inicial
+  p {
+    color: #a5a5a5;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+.visible {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 1rem; // <--- valor expandido
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

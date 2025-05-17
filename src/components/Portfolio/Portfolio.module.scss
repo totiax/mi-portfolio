@@ -1,0 +1,157 @@
+// Portfolio.module.scss
+
+.portfolioSection {
+  padding: 2rem; // o padding: 2rem 2rem;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.customHeadingContainer {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #64ffda;
+    margin: 0;
+  }
+
+  hr {
+    width: 60px;
+    height: 3px;
+    background: #64ffda;
+    border: none;
+    margin: 0 auto;
+  }
+}
+
+.layoutPadding {
+  margin-top: 2rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.col {
+  flex: 1 1 300px; // Ajusta el tamaño mínimo de las columnas
+  max-width: 300px; // Limita el ancho máximo
+}
+
+.imgBox {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+  cursor: pointer;
+  &::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: 0 auto;
+    background-color: black;
+    opacity: 0;
+    transition: 0.3s all ease-in-out;
+  }
+  &:hover {
+    transform: scale(1.05);
+    &::after {
+      opacity: 0.5;
+    }
+  }
+
+  .projectImage {
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .linkIcon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 5px;
+    transition: background 0.3s;
+
+    &:hover {
+      background: rgba(100, 255, 218, 0.8);
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 768px) {
+  .portfolioSection {
+    padding: 1rem 0.5rem;
+    height: auto;
+    min-height: 100vh;
+    align-items: center;
+  }
+  .container {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .customHeadingContainer {
+    margin-bottom: 1.2rem;
+    h2 {
+      font-size: 2rem;
+    }
+    hr {
+      width: 40px;
+    }
+  }
+  .layoutPadding {
+    margin-top: 1rem;
+  }
+  .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 3rem;
+  }
+  .col {
+    max-width: 100%;
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .imgBox {
+    width: 60%;
+    .projectImage {
+      width: 100% !important;
+      height: auto !important;
+      object-fit: cover;
+      display: block;
+    }
+  }
+}
