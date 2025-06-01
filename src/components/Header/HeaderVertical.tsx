@@ -7,6 +7,7 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 import styles from "./HeaderVertical.module.scss";
+import { useState, useEffect } from "react";
 
 const sections = [
   { id: "inicio", label: "Inicio", icon: <FaHome /> },
@@ -24,6 +25,13 @@ export default function HeaderVertical({
   currentSection: number;
   onSectionClick: (idx: number) => void;
 }) {
+  const [isDesktop, setIsDesktop] = useState(true);
+  useEffect(() => {
+    const checkIsDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkIsDesktop();
+    window.addEventListener("resize", checkIsDesktop);
+    return () => window.removeEventListener("resize", checkIsDesktop);
+  }, []);
   return (
     <nav className={styles.headerVertical}>
       {sections.map((section, idx) => (
@@ -40,7 +48,11 @@ export default function HeaderVertical({
           }}
         >
           {section.icon}
-          <span className={styles.tooltip}>{section.label}</span>
+          {isDesktop ? (
+            <span className={styles.tooltip}>{section.label}</span>
+          ) : (
+            ""
+          )}
         </a>
       ))}
     </nav>

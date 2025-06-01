@@ -29,9 +29,18 @@ export default function FullPageScroll() {
   const [currentSection, setCurrentSection] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const checkIsDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkIsDesktop();
+    window.addEventListener("resize", checkIsDesktop);
+    return () => window.removeEventListener("resize", checkIsDesktop);
+  }, []);
 
   useEffect(() => {
     // Inicializar el array de refs
+    if (!isDesktop) return;
     sectionsRef.current = sectionsRef.current.slice(0, sections.length);
 
     const observer = new IntersectionObserver(
@@ -77,7 +86,7 @@ export default function FullPageScroll() {
       window.removeEventListener("wheel", handleWheel);
       observer.disconnect();
     };
-  }, [currentSection, isScrolling]);
+  }, [currentSection, isScrolling, isDesktop]);
 
   const setRefs = (el: HTMLElement | null, index: number) => {
     sectionsRef.current[index] = el;

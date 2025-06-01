@@ -1,6 +1,7 @@
 // Navigation.tsx (igual que antes)
 import { Section } from "./types";
 import styles from "./Navigation.module.scss";
+import { useState, useEffect } from "react";
 
 interface NavigationProps {
   sections: Section[];
@@ -22,6 +23,26 @@ export default function Navigation({
   currentSection,
   onDotClick,
 }: NavigationProps) {
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const checkIsDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkIsDesktop();
+    window.addEventListener("resize", checkIsDesktop);
+    return () => window.removeEventListener("resize", checkIsDesktop);
+  }, []);
+
+  const handleDotClick = (index: number) => {
+    if (isDesktop) {
+      // Comportamiento desktop (scroll seccionado)
+      onDotClick(index);
+    } else {
+      // Comportamiento mobile (scroll normal)
+      const section = document.getElementById(sections[index].id);
+      section?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className={styles.navigation}>
       <div className={styles.dotsContainer}>
@@ -31,7 +52,7 @@ export default function Navigation({
             className={`${styles.dot} ${
               currentSection === index ? styles.active : ""
             }`}
-            onClick={() => onDotClick(index)}
+            onClick={() => handleDotClick(index)}
             aria-label={sectionNames[section.id] || section.id}
           >
             <div className={styles.dotContent}>
