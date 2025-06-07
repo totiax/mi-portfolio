@@ -53,15 +53,6 @@ const mainTools: Tool[] = [
     description:
       "WordPress es una herramienta poderosa para construir prácticamente cualquier tipo de sitio web, desde blogs hasta tiendas en línea.",
   },
-  {
-    name: "JavaScript",
-    iconData: {
-      type: "fontawesome",
-      icon: faJs,
-    },
-    description:
-      "JavaScript es una herramienta poderosa y versátil que permite construir una amplia variedad de aplicaciones y características.",
-  },
 ];
 
 const additionalTools: AdditionalTool[] = [
@@ -90,26 +81,28 @@ export default function Tools() {
           {mainTools.map((tool) => (
             <div key={tool.name} className={styles.col}>
               <div className={styles.box}>
-                <div className={styles.imgBox}>
-                  {tool.iconData.type === "image" ? (
-                    <Image
-                      src={tool.iconData.icon as StaticImageData}
-                      alt={tool.name}
-                      className={styles.toolIcon}
-                      width={100}
-                      height={100}
-                    />
-                  ) : (
-                    <FontAwesomeIcon
-                      icon={tool.iconData.icon as IconDefinition}
-                      size="3x"
-                      className={styles.toolIcon}
-                    />
-                  )}
-                </div>
-                <div className={styles.detailBox}>
-                  <h4>{tool.name}</h4>
-                  <p>{tool.description}</p>
+                <div className={styles.contentShadow}>
+                  <div className={styles.imgBox}>
+                    {tool.iconData.type === "image" ? (
+                      <Image
+                        src={tool.iconData.icon as StaticImageData}
+                        alt={tool.name}
+                        className={styles.toolIcon}
+                        width={100}
+                        height={100}
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        icon={tool.iconData.icon as IconDefinition}
+                        size="3x"
+                        className={styles.toolIcon}
+                      />
+                    )}
+                  </div>
+                  <div className={styles.detailBox}>
+                    <h4>{tool.name}</h4>
+                    <p>{tool.description}</p>
+                  </div>
                 </div>
               </div>
             </div>

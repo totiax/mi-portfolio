@@ -54,21 +54,20 @@ export default function Portfolio() {
           <div className={styles.row}>
             {projects.map((project) => (
               <div key={project.id} className={styles.col}>
-                <div className={styles.imgBox}>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={project.link}
+                  className={styles.imgBox}
+                >
                   <Image
                     src={project.image}
                     alt={project.title}
-                    width={300}
+                    width={400}
                     height={200}
                     className={styles.projectImage}
                   />
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={project.link}
-                    className={styles.linkOverlay}
-                  ></a>
-                </div>
+                </a>
               </div>
             ))}
           </div>

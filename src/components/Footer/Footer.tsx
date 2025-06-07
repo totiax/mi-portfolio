@@ -21,25 +21,18 @@ export default function Footer() {
       <div className={styles.container}>
         <div className={styles.socialLinks}>
           <a
-            href="https://github.com/tuusuario"
+            href="https://github.com/totiax"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FontAwesomeIcon icon={faGithub} />
           </a>
           <a
-            href="https://linkedin.com/in/tuusuario"
+            href="https://www.linkedin.com/in/matias-skuarok/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FontAwesomeIcon icon={faLinkedin} />
-          </a>
-          <a
-            href="https://twitter.com/tuusuario"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faTwitter} />
           </a>
         </div>
         <p className={styles.copyright}>&copy; {year} Matias Skuarok</p>

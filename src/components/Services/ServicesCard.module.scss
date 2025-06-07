@@ -1,8 +1,8 @@
 .card {
+  clip-path: polygon(8% 0%, 100% 0%, 93% 100%, 0% 100%);
   background: #232536;
-  border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-  padding: 2rem 1.5rem;
+  padding: 4rem 2.5rem;
   cursor: pointer;
   transition: box-shadow 0.3s, transform 0.3s;
   display: flex;
@@ -12,7 +12,7 @@
   transition: 0.3 all ease-in-out;
   // NO height fija aquí
   @media (max-width: 768px) {
-    padding: 1rem;
+    padding: 1rem 2.2rem;
   }
   &:hover {
     transform: translateY(-4px);

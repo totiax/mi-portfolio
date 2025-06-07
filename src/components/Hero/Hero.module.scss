@@ -14,7 +14,6 @@
   gap: 3rem;
   width: 100%;
   max-width: 1200px;
-  padding: 0 2rem;
   position: relative;
 }
 
@@ -222,6 +221,10 @@
   right: 0;
   bottom: 5%;
   padding-right: 3rem;
+  @media screen and (max-width: 640px) {
+    bottom: 12%;
+    padding-right: 1rem;
+  }
 }
 
 .arrowSvg {

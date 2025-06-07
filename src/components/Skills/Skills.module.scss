@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-bottom: 2.5rem;
+  margin-bottom: 5.5rem;
 
   .customHeadingContainer {
     display: flex;
@@ -46,8 +46,7 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .col {
@@ -59,21 +58,17 @@
 }
 
 .box {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-  padding: 2.5rem 1.5rem 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: transform 0.6s cubic-bezier(0.4, 2, 0.6, 1), box-shadow 0.3s;
   position: relative;
   overflow: hidden;
-
   &:hover {
     transform: translateY(-10px) scale(1.04);
-    box-shadow: 0 16px 48px rgba(100, 255, 218, 0.12),
-      0 8px 32px rgba(0, 0, 0, 0.22);
+  }
+  &:hover .imgBox {
+    filter: drop-shadow(0px 0px 8px #64ffda);
   }
 }
 
@@ -82,10 +77,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
+  overflow: hidden;
+  transition: filter 0.12s all ease-in-out;
 
   .toolIcon {
     color: #64ffda; // Color del ícono
-    width: 80px; // Ajusta el tamaño según sea necesario
+    width: 120px; // Ajusta el tamaño según sea necesario
     height: auto; // Mantiene la proporción
   }
 }
@@ -199,8 +197,8 @@
   .imgBox {
     margin-bottom: 0;
     .toolIcon {
-      width: 20px;
-      height: 20px;
+      width: 40px;
+      height: 40px;
     }
   }
   .detailBox {

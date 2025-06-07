@@ -64,7 +64,7 @@ export default function About() {
                       src={image.src}
                       alt={image.alt}
                       fill
-                      sizes="(max-width: 768px) 100vw, 500px"
+                      sizes="(max-width: 768px) 100vw, 590px"
                       className={styles.dynamicImage}
                       priority={index === 0}
                       style={{ objectFit: "cover", objectPosition: "center" }}
