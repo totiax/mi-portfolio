@@ -43,7 +43,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr); // 3 columnas fijas
   grid-template-rows: repeat(2, 1fr); // 2 filas fijas
-  gap: 2rem;
+  gap: 1.5rem;
   justify-items: center;
   align-items: stretch;
 }
@@ -58,11 +58,10 @@
 .imgBox {
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s;
   cursor: pointer;
-  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  clip-path: polygon(8% 0%, 100% 0%, 93% 100%, 0% 100%);
   display: block; // Agregar esto
   text-decoration: none; // Agregar esto
 
@@ -88,7 +87,6 @@
   }
 
   .projectImage {
-    border-radius: 10px;
     object-fit: cover;
   }
 
