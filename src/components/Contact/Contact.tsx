@@ -127,7 +127,7 @@ export default function Contact() {
               <span>Contacta conmigo</span>
             </h2>
             <div className={styles.downloadContainer}>
-              <a href="/cv/matiasSkuarokFullStackDev.jpg" download>
+              <a href="/cv/desarrolladorFullStack-dev.pdf" download>
                 <span>Descarga</span>
                 <div className={styles.downloadArrow}>
                   <svg
