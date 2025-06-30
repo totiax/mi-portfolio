@@ -190,6 +190,10 @@
 }
 
 @media (max-width: 768px) {
+  .aboutSection {
+    height: auto;
+    min-height: 100vh;
+  }
   .imgBox {
     max-width: 100%;
   }

@@ -189,6 +189,10 @@
 }
 
 @media (max-width: 576px) {
+  .heroSection {
+    height: auto;
+    min-height: 100vh;
+  }
   .heroContainer {
     gap: 0;
     padding: 0;
