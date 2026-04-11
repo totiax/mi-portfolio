@@ -1,4 +1,3 @@
-// Background3D.module.scss
 .bg3d {
   position: fixed;
   inset: 0;
@@ -6,36 +5,46 @@
   pointer-events: none;
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(ellipse at 60% 40%, #23243a 0%, #111218 100%);
+  background: radial-gradient(ellipse at 35% 25%, #0d0d1a 0%, #05050a 70%);
   overflow: hidden;
 }
 
 .spotlight {
   position: absolute;
-  left: 50%; // Centro horizontal
-  transform: translateX(-50%); // Centra perfectamente
-  width: 40vw; // Tamaño del círculo
-  height: 40vw; // Igual que el width para hacer un círculo perfecto
+  left: 60%;
+  transform: translateX(-50%);
+  width: 50vw;
+  height: 50vw;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,255,240,0.18) 0%, transparent 80%);
-  filter: blur(48px);
-  transition: top 0.5s, opacity 0.5s;
-  opacity: 0.8;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.14) 0%, transparent 70%);
+  filter: blur(70px);
+  transition: top 0.9s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.9s;
+  opacity: 0.7;
   pointer-events: none;
-  animation: spinSpotlight 12s ease-in-out infinite;
+  animation: breatheCyan 9s ease-in-out infinite;
 }
 
-@keyframes spinSpotlight {
-  0% { 
-    rotate: 0deg;
-    filter: blur(48px) brightness(0.7);
-  }
-  50% {
-    rotate: 180deg;
-    filter: blur(48px) brightness(1.3);
-  }
-  100% { 
-    rotate: 360deg;
-    filter: blur(48px) brightness(0.7);
-  }
+.spotlightViolet {
+  position: absolute;
+  left: 25%;
+  transform: translateX(-50%);
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.11) 0%, transparent 70%);
+  filter: blur(90px);
+  transition: top 0.9s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.9s;
+  opacity: 0.6;
+  pointer-events: none;
+  animation: breatheViolet 11s ease-in-out infinite;
+}
+
+@keyframes breatheCyan {
+  0%, 100% { filter: blur(70px) brightness(0.8); transform: translateX(-50%) scale(1); }
+  50%       { filter: blur(70px) brightness(1.4); transform: translateX(-50%) scale(1.08); }
+}
+
+@keyframes breatheViolet {
+  0%, 100% { filter: blur(90px) brightness(1.1); transform: translateX(-50%) scale(1.05); }
+  50%       { filter: blur(90px) brightness(0.7); transform: translateX(-50%) scale(1); }
 }

@@ -4,6 +4,7 @@ import styles from "./Contact.module.scss";
 import { Metadata } from "next";
 import Script from "next/script";
 import { Toast } from "../Toast/Toast";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: "Contact Page",
@@ -32,6 +33,7 @@ interface FormData {
 }
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState<FormData>({
     nombre: "",
     email: "",
@@ -85,7 +87,7 @@ export default function Contact() {
         if (result.status === 200) {
           setToast({
             show: true,
-            message: "¡Mensaje enviado con éxito!",
+            message: t("contact.toast.success"),
             type: "success",
           });
           setFormData({
@@ -99,7 +101,7 @@ export default function Contact() {
         console.error("Error:", error);
         setToast({
           show: true,
-          message: "Error al enviar el mensaje.",
+          message: t("contact.toast.error"),
           type: "error",
         });
       }
@@ -123,12 +125,12 @@ export default function Contact() {
         <div className={styles.row}>
           <div className={styles.col_md_6}>
             <h2 className={styles.sectionTitle}>
-              Descarga CV <br />
-              <span>Contacta conmigo</span>
+              {t("contact.title1")} <br />
+              <span>{t("contact.title2")}</span>
             </h2>
             <div className={styles.downloadContainer}>
-              <a href="/cv/desarrolladorFullStack-dev.pdf" download>
-                <span>Descarga</span>
+              <a href={t("contact.cv_file")} download>
+                <span>{t("contact.download")}</span>
                 <div className={styles.downloadArrow}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +168,7 @@ export default function Contact() {
                   <input
                     type="text"
                     name="nombre"
-                    placeholder="Nombre"
+                    placeholder={t("contact.form.name")}
                     value={formData.nombre}
                     onChange={handleChange}
                     required
@@ -176,7 +178,7 @@ export default function Contact() {
                   <input
                     type="email"
                     name="email"
-                    placeholder="Email"
+                    placeholder={t("contact.form.email")}
                     value={formData.email}
                     onChange={handleChange}
                     required
@@ -186,7 +188,7 @@ export default function Contact() {
                   <input
                     type="text"
                     name="telefono"
-                    placeholder="Número de teléfono"
+                    placeholder={t("contact.form.phone")}
                     value={formData.telefono}
                     onChange={handleChange}
                     required
@@ -195,7 +197,7 @@ export default function Contact() {
                 <div>
                   <input
                     name="mensaje"
-                    placeholder="Mensaje"
+                    placeholder={t("contact.form.message")}
                     value={formData.mensaje}
                     onChange={handleChange}
                     required
@@ -203,7 +205,7 @@ export default function Contact() {
                   />
                 </div>
                 <div className={styles.mt5}>
-                  <button type="submit">Enviar</button>
+                  <button type="submit">{t("contact.form.send")}</button>
                 </div>
               </form>
             </div>

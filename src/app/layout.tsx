@@ -1,17 +1,17 @@
-// src/app/layout.tsx
 "use client";
 import "./globals.css";
+import { LanguageProvider } from "@/context/LanguageContext";
+import FloatingLanguageToggle from "@/components/FloatingLanguageToggle/FloatingLanguageToggle";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
       <body suppressHydrationWarning>
-        <div className="fixed-background" />
-        <main className="content-container">{children}</main>
+        <LanguageProvider>
+          <div className="viewport-frame" />
+          <FloatingLanguageToggle />
+          <main className="content-container">{children}</main>
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -1,0 +1,88 @@
+{
+  "header": {
+    "sections": {
+      "inicio": "Home",
+      "sobre-mi": "About Me",
+      "servicios": "Services",
+      "portfolio": "Portfolio",
+      "skills": "Skills",
+      "contacto": "Contact"
+    }
+  },
+  "hero": {
+    "available": "AVAILABLE",
+    "roles": [
+      "FULL STACK DEV",
+      "FRONTEND DEV",
+      "BACKEND DEV",
+      "UI ENTHUSIAST"
+    ],
+    "see_projects": "VIEW PROJECTS →",
+    "cv": "↓ CV",
+    "cv_file": "/cv/Matias_Skuarok_FullStack-english.docx",
+    "scroll": "SCROLL ↓"
+  },
+  "about": {
+    "section_number": "02 — ABOUT ME",
+    "bio": "Freelance Full-Stack Developer passionate about innovation and continuous learning. Since 2020 I build interactive web experiences that combine high-level design and functionality.",
+    "stats": {
+      "years": "Years of\nexperience",
+      "projects": "Completed\nprojects",
+      "clients": "Satisfied\nclients"
+    }
+  },
+  "services": {
+    "section_number": "03 — SERVICES",
+    "title": "Services",
+    "subtitle": "Specialized development, optimizing resources and improving flexibility and scalability.",
+    "list": {
+      "s1": {
+        "title": "Web Development",
+        "desc": "Web development is a fundamental service in today's digital world. It allows companies and individuals to create an effective and attractive online presence."
+      },
+      "s2": {
+        "title": "Project Evaluation",
+        "desc": "Detailed analysis of requirements and objectives to guarantee effective and scalable solutions."
+      },
+      "s3": {
+        "title": "Custom Design",
+        "desc": "Creation of unique and customized interfaces that reflect your brand's identity."
+      },
+      "s4": {
+        "title": "Deployment & Maintenance",
+        "desc": "Professional implementation and continuous support to keep your site updated and secure."
+      }
+    }
+  },
+  "portfolio": {
+    "section_number": "04 — PORTFOLIO",
+    "title": "Projects",
+    "view_site": "View site"
+  },
+  "skills": {
+    "chip": "Stack",
+    "title": "Main Tools",
+    "main": {
+      "nextjs": "Combines the ease of React with features that maximize the performance and scalability of web applications.",
+      "nestjs": "Progressive Node.js framework for building efficient, reliable and scalable backend applications."
+    },
+    "others": "Other technologies"
+  },
+  "contact": {
+    "title1": "Download CV",
+    "title2": "Contact me",
+    "download": "Download",
+    "cv_file": "/cv/Matias_Skuarok_FullStack-english.pdf",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "message": "Message",
+      "send": "Send"
+    },
+    "toast": {
+      "success": "Message sent successfully!",
+      "error": "Error sending the message."
+    }
+  }
+}

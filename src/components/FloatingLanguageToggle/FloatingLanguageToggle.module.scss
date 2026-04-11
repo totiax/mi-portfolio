@@ -1,0 +1,46 @@
+.languageToggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(20, 20, 20, 0.8);
+    transform: translateY(-2px);
+  }
+
+  span {
+    transition: color 0.3s ease;
+  }
+
+  .active {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .separator {
+    color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .languageToggle {
+    bottom: unset;
+    top: 24px;
+    right: 24px;
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "header": {
+    "sections": {
+      "inicio": "Inicio",
+      "sobre-mi": "Sobre mí",
+      "servicios": "Servicios",
+      "portfolio": "Portfolio",
+      "skills": "Skills",
+      "contacto": "Contacto"
+    }
+  },
+  "hero": {
+    "available": "DISPONIBLE",
+    "roles": [
+      "FULL STACK DEV",
+      "FRONTEND DEV",
+      "BACKEND DEV",
+      "UI ENTHUSIAST"
+    ],
+    "see_projects": "VER PROYECTOS →",
+    "cv": "↓ CV",
+    "cv_file": "/cv/desarrolladorFullStack-dev.pdf",
+    "scroll": "SCROLL ↓"
+  },
+  "about": {
+    "section_number": "02 — SOBRE MÍ",
+    "bio": "Desarrollador Full-Stack Freelance apasionado por la innovación y el aprendizaje continuo. Desde 2020 construyo experiencias web interactivas que combinan diseño y funcionalidad de alto nivel.",
+    "stats": {
+      "years": "Años de\nexperiencia",
+      "projects": "Proyectos\nrealizados",
+      "clients": "Clientes\nsatisfechos"
+    }
+  },
+  "services": {
+    "section_number": "03 — SERVICIOS",
+    "title": "Servicios",
+    "subtitle": "Desarrollo especializado, optimizando recursos y mejorando la flexibilidad y escalabilidad.",
+    "list": {
+      "s1": {
+        "title": "Desarrollo web",
+        "desc": "El desarrollo web es un servicio fundamental en el mundo digital actual. Permite a las empresas y particulares crear una presencia en línea efectiva y atractiva."
+      },
+      "s2": {
+        "title": "Evaluación de proyecto",
+        "desc": "Análisis detallado de requisitos y objetivos para garantizar soluciones efectivas y escalables."
+      },
+      "s3": {
+        "title": "Diseño a medida",
+        "desc": "Creación de interfaces únicas y personalizadas que reflejan la identidad de tu marca."
+      },
+      "s4": {
+        "title": "Subida y mantenimiento",
+        "desc": "Implementación profesional y soporte continuo para mantener tu sitio actualizado y seguro."
+      }
+    }
+  },
+  "portfolio": {
+    "section_number": "04 — PORTFOLIO",
+    "title": "Proyectos",
+    "view_site": "Ver sitio"
+  },
+  "skills": {
+    "chip": "Stack",
+    "title": "Herramientas principales",
+    "main": {
+      "nextjs": "Combina la facilidad de React con características que maximizan el rendimiento y la escalabilidad de las aplicaciones web.",
+      "nestjs": "Framework progresivo de Node.js para construir aplicaciones backend eficientes, confiables y escalables."
+    },
+    "others": "Otras tecnologías"
+  },
+  "contact": {
+    "title1": "Descarga CV",
+    "title2": "Contacta conmigo",
+    "download": "Descarga",
+    "cv_file": "/cv/desarrolladorFullStack-dev.pdf",
+    "form": {
+      "name": "Nombre",
+      "email": "Email",
+      "phone": "Número de teléfono",
+      "message": "Mensaje",
+      "send": "Enviar"
+    },
+    "toast": {
+      "success": "¡Mensaje enviado con éxito!",
+      "error": "Error al enviar el mensaje."
+    }
+  }
+}

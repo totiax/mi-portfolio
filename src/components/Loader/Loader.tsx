@@ -3,28 +3,42 @@ import { useEffect, useState } from "react";
 import styles from "./Loader.module.scss";
 
 interface LoaderProps {
-  onLoadingComplete?: () => void; // Callback opcional para notificar cuando termina
+  onLoadingComplete?: () => void;
 }
 
 const Loader = ({ onLoadingComplete }: LoaderProps = {}) => {
-  const [isHiding, setIsHiding] = useState(false);
+  const [isHiding, setIsHiding]   = useState(false);
+  const [progress, setProgress]   = useState(0);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((p) => {
+        if (p >= 100) { clearInterval(interval); return 100; }
+        return p + 2;
+      });
+    }, 38);
+
     const timer = setTimeout(() => {
       setIsHiding(true);
-      // Notificamos que el loader está terminando
-      if (onLoadingComplete) {
-        // Esperamos a que termine la animación de fade out
-        setTimeout(onLoadingComplete, 500);
-      }
-    }, 2000);
+      if (onLoadingComplete) setTimeout(onLoadingComplete, 600);
+    }, 2100);
 
-    return () => clearTimeout(timer);
+    return () => { clearTimeout(timer); clearInterval(interval); };
   }, [onLoadingComplete]);
 
   return (
     <div className={`${styles.loaderWrapper} ${isHiding ? styles.hide : ""}`}>
-      <div className={styles.loader}></div>
+      <div className={styles.loaderContent}>
+        <div className={styles.monogram}>
+          <span className={styles.letterCyan}>M</span>
+          <span className={styles.letterWhite}>S</span>
+        </div>
+        <div className={styles.progressBar}>
+          <div className={styles.progressFill} style={{ width: `${progress}%` }} />
+        </div>
+        <p className={styles.loadingLabel}>Cargando experiencia…</p>
+      </div>
+      <div className={styles.sweepLine} />
     </div>
   );
 };

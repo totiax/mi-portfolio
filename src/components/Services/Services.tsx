@@ -1,55 +1,55 @@
+"use client";
+import { useState } from "react";
 import {
-  faCode,
-  faClipboardCheck,
-  faPaintBrush,
-  faUpload,
+  faCode, faClipboardCheck, faPaintBrush, faUpload,
 } from "@fortawesome/free-solid-svg-icons";
 import ServiceCard from "./ServicesCard";
 import styles from "./Services.module.scss";
-
-const services = [
-  {
-    id: 1,
-    title: "Desarrollo web",
-    icon: faCode,
-    description:
-      "El desarrollo web es un servicio fundamental en el mundo digital actual. Permite a las empresas y particulares crear una presencia en línea efectiva y atractiva.",
-  },
-  {
-    id: 2,
-    title: "Evaluación de proyecto",
-    icon: faClipboardCheck,
-    description:
-      "Análisis detallado de requisitos y objetivos para garantizar soluciones efectivas y escalables.",
-  },
-  {
-    id: 3,
-    title: "Diseño a medida",
-    icon: faPaintBrush,
-    description:
-      "Creación de interfaces únicas y personalizadas que reflejan la identidad de tu marca.",
-  },
-  {
-    id: 4,
-    title: "Subida y mantenimiento",
-    icon: faUpload,
-    description:
-      "Implementación profesional y soporte continuo para mantener tu sitio actualizado y seguro.",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Services() {
+  const [activeId, setActiveId] = useState<number | null>(null);
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      id: 1,
+      title: t("services.list.s1.title"),
+      icon: faCode,
+      description: t("services.list.s1.desc"),
+    },
+    {
+      id: 2,
+      title: t("services.list.s2.title"),
+      icon: faClipboardCheck,
+      description: t("services.list.s2.desc"),
+    },
+    {
+      id: 3,
+      title: t("services.list.s3.title"),
+      icon: faPaintBrush,
+      description: t("services.list.s3.desc"),
+    },
+    {
+      id: 4,
+      title: t("services.list.s4.title"),
+      icon: faUpload,
+      description: t("services.list.s4.desc"),
+    },
+  ];
+
+  const handleToggle = (id: number) => {
+    setActiveId((prev) => (prev === id ? null : id));
+  };
+
   return (
     <section className={styles.serviceSection}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <div className={styles.customHeadingContainer}>
-            <hr />
-            <h2>Servicios</h2>
-          </div>
-          <p>
-            Desarrollo especializado, optimizando recursos y mejorando la
-            flexibilidad y escalabilidad.
+          <span className={styles.sectionNumber}>{t("services.section_number")}</span>
+          <h2 className={styles.sectionTitle}>{t("services.title")}</h2>
+          <p className={styles.sectionSubtitle}>
+            {t("services.subtitle")}
           </p>
         </div>
         <div className={styles.serviceContainer}>
@@ -59,6 +59,8 @@ export default function Services() {
               title={service.title}
               description={service.description}
               icon={service.icon}
+              isOpen={activeId === service.id}
+              onToggle={() => handleToggle(service.id)}
             />
           ))}
         </div>

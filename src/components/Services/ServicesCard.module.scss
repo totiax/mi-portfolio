@@ -1,21 +1,37 @@
+/* ServicesCard — uniform cyan, no per-card colors */
 .card {
-  clip-path: polygon(8% 0%, 100% 0%, 93% 100%, 0% 100%);
-  background: #232536;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-  padding: 4rem 2.5rem;
-  cursor: pointer;
-  transition: box-shadow 0.3s, transform 0.3s;
-  display: flex;
-  flex-direction: column;
-  min-width: 240px;
   position: relative;
-  transition: 0.3 all ease-in-out;
-  // NO height fija aquí
-  @media (max-width: 768px) {
-    padding: 1rem 2.2rem;
+  background: rgba(13, 13, 26, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid rgba(6, 182, 212, 0.25);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 182, 212, 0.04);
+    opacity: 0;
+    transition: opacity 0.28s;
   }
+
+  &:hover::before  { opacity: 1; }
+  &.active::before { opacity: 1; }
+
   &:hover {
-    transform: translateY(-4px);
+    border-left-color: rgba(6, 182, 212, 0.5);
+    transform: translateX(4px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  &.active {
+    border-left-color: #06b6d4;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.3), -3px 0 16px rgba(6, 182, 212, 0.08);
   }
 }
 
@@ -23,58 +39,70 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.iconBadge {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: box-shadow 0.28s;
+
+  .card.active & {
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.15);
+    background: rgba(6, 182, 212, 0.12);
+  }
 }
 
 .icon {
-  font-size: 2.5rem;
-  color: #64ffda;
-  flex-shrink: 0;
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
+  color: #06b6d4;
+  font-size: 1rem;
 }
 
 .title {
-  color: #fff;
-  font-size: 1.15rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
   font-weight: 700;
-  margin: 0;
+  color: #f0ede8;
   flex: 1;
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
+  letter-spacing: 0.01em;
 }
 
 .chevron {
-  color: #64ffda;
-  font-size: 1.2rem;
-  margin-left: 0.5rem;
-  transition: transform 0.3s;
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
-}
-.rotate {
-  transform: rotate(180deg);
+  color: rgba(148, 163, 184, 0.4);
+  font-size: 0.8rem;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), color 0.28s;
+  flex-shrink: 0;
+
+  &.rotate { transform: rotate(180deg); color: #06b6d4; }
 }
 
 .content {
   max-height: 0;
-  opacity: 0;
   overflow: hidden;
-  transition: max-height 0.3s, opacity 0.3s, margin-top 0.3s;
-  margin-top: 0; // <--- valor inicial
-  p {
-    color: #a5a5a5;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 0;
+  transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+  opacity: 0;
+  position: relative;
+  z-index: 1;
+
+  &.visible {
+    max-height: 160px;
+    opacity: 1;
   }
-}
-.visible {
-  max-height: 200px;
-  opacity: 1;
-  margin-top: 1rem; // <--- valor expandido
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: #64748b;
+    padding-top: 0.9rem;
+    padding-left: 3.4rem;
+  }
 }

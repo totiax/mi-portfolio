@@ -1,40 +1,102 @@
 .loaderWrapper {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #000000; /* Cambia el color de fondo aquí */
+  background: #05050a;
   z-index: 99999;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  overflow: hidden;
 }
+
 .hide {
   opacity: 0;
   visibility: hidden;
 }
 
-.loader {
-  width: 80px;
-  aspect-ratio: 1;
-  border: 10px solid transparent;
-  box-sizing: border-box;
-  background: radial-gradient(farthest-side, #64ffda 98%, transparent) 0 0/20px
-      20px,
-    /* Cambia el color de los puntos aquí */
-      radial-gradient(farthest-side, #64ffda 98%, transparent) 100% 0/20px 20px,
-    radial-gradient(farthest-side, #64ffda 98%, transparent) 100% 100%/20px 20px,
-    radial-gradient(farthest-side, #64ffda 98%, transparent) 0 100%/20px 20px,
-    linear-gradient(#64ffda 0 0) 50%/40px 40px,
-    /* Cambia el color de la línea central aquí */ #141414; /* Cambia el color de fondo del loader aquí */
-  background-repeat: no-repeat;
-  filter: blur(4px) contrast(10);
-  animation: l12 0.8s infinite;
+.loaderContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  animation: fadeUp 0.5s ease forwards;
 }
 
-@keyframes l12 {
-  100% {
-    background-position: 100% 0, 100% 100%, 0 100%, 0 0, center;
-  }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.monogram {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.letterCyan {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(5rem, 14vw, 9rem);
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, #06b6d4 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: letterPulse 1.6s ease-in-out infinite alternate;
+}
+
+.letterWhite {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(5rem, 14vw, 9rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #f8fafc;
+  animation: letterPulse 1.6s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes letterPulse {
+  from { opacity: 0.5; transform: translateY(4px); }
+  to   { opacity: 1;   transform: translateY(0); }
+}
+
+.progressBar {
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #06b6d4, #7c3aed, #f43f5e);
+  border-radius: 2px;
+  transition: width 0.04s linear;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+}
+
+.loadingLabel {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.sweepLine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.03), transparent);
+  animation: sweep 2.2s ease-in-out infinite;
+}
+
+@keyframes sweep {
+  from { left: -100%; }
+  to   { left: 100%; }
 }
