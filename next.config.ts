@@ -4,6 +4,11 @@ import type { Configuration } from 'webpack'
 
 const nextConfig: NextConfig = {
   transpilePackages: ['locomotive-scroll'],
+  turbopack: {
+    resolveAlias: {
+      'locomotive-scroll': 'locomotive-scroll/dist/locomotive-scroll.esm.js',
+    },
+  },
   webpack: (config: Configuration) => {
     if (!config.resolve) {
       config.resolve = {};
