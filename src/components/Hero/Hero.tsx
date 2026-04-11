@@ -9,6 +9,7 @@ export default function Hero() {
   return (
     <section className={styles.heroSection}>
 
+
       {/* ── Corner TL ── */}
       <div className={styles.cornerTL}>
         <span className={styles.mono}>MS.DEV</span>
@@ -43,6 +44,7 @@ export default function Hero() {
             backSpeed={30}
             loop
             className={styles.typingMono}
+
           />
         </div>
 

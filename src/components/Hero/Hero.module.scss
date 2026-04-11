@@ -108,6 +108,7 @@
   }
 }
 
+
 .bottomLeft {
   display: flex;
   align-items: center;
@@ -148,6 +149,7 @@
   border: 1px solid rgba(6, 182, 212, 0.35);
   border-radius: 100px;
   transition: all 0.25s;
+
 
   &:hover {
     background: rgba(6, 182, 212, 0.1);
