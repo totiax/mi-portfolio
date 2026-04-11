@@ -111,16 +111,14 @@
 }
 
 .heroImageWrapper {
-  width: 620px;
-  height: 620px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
-  border: 4px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  // box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+  // border: 4px solid rgba(255, 255, 255, 0.2);
+  // background: rgba(255, 255, 255, 0.05);
+  // clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
   transition: transform 0.3s ease;
 
   &:hover {
