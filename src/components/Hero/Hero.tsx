@@ -23,10 +23,10 @@ export default function Hero() {
         </div>
         <div className={styles.heroImageWrapper}>
           <Image
-            src="/faces/20241030_220448.jpg"
+            src="/faces/face.png"
             alt="Matias Skuarok"
             className={styles.heroImage}
-            width={700}
+            width={400}
             height={700}
             priority // Añadido priority ya que es la primera imagen visible
           />
