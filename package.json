@@ -17,9 +17,10 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@fullpage/react-fullpage": "^0.1.48",
+    "@gsap/react": "^2.1.2",
     "cors": "^2.8.5",
     "framer-motion": "^12.9.1",
-    "gsap": "^3.12.0",
+    "gsap": "^3.15.0",
     "locomotive-scroll": "^4.1.4",
     "next": "^16.2.3",
     "nodemailer": "^7.0.2",
@@ -28,7 +29,8 @@
     "react-icons": "^5.5.0",
     "react-typed": "^2.0.12",
     "sass": "^1.86.3",
-    "tempus": "^1.0.0-dev.11"
+    "tempus": "^1.0.0-dev.11",
+    "three": "^0.186.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -37,6 +39,7 @@
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "@types/three": "^0.186.0",
     "@types/webpack": "^5.28.5",
     "eslint": "^9",
     "eslint-config-next": "15.3.0",
