@@ -36,6 +36,38 @@ export default function Kinetico({ fonts }: { fonts: string }) {
           const { motion, fine } = ctx.conditions as { motion: boolean; fine: boolean };
           if (!motion) return;
 
+          const quitarNombre: (() => void)[] = [];
+          const activarNombre = (chars: Element[]) => {
+            if (!fine) return;
+            const hero = root.current!.querySelector<HTMLElement>(`.${s.hero}`)!;
+            const letras = chars.map((el) => ({
+              el,
+              x: gsap.quickTo(el, "x", { duration: 0.7, ease: "power3" }),
+              y: gsap.quickTo(el, "y", { duration: 0.7, ease: "power3" }),
+              r: gsap.quickTo(el, "rotation", { duration: 0.9, ease: "power3" }),
+            }));
+            const atraer = (e: PointerEvent) => {
+              letras.forEach(({ el, x, y, r }) => {
+                const b = el.getBoundingClientRect();
+                const cx = b.left + b.width / 2 - (gsap.getProperty(el, "x") as number);
+                const cy = b.top + b.height / 2 - (gsap.getProperty(el, "y") as number);
+                const dx = e.clientX - cx;
+                const dy = e.clientY - cy;
+                const f = Math.max(0, 1 - Math.hypot(dx, dy) / 520) ** 2;
+                x(dx * 0.14 * f);
+                y(dy * 0.14 * f);
+                r(gsap.utils.clamp(-10, 10, dx * 0.025 * f));
+              });
+            };
+            const soltar = () => letras.forEach(({ x, y, r }) => (x(0), y(0), r(0)));
+            hero.addEventListener("pointermove", atraer);
+            hero.addEventListener("pointerleave", soltar);
+            quitarNombre.push(() => {
+              hero.removeEventListener("pointermove", atraer);
+              hero.removeEventListener("pointerleave", soltar);
+            });
+          };
+
           SplitText.create(`.${s.bigLine}`, {
             type: "chars",
             onSplit: (self) =>
@@ -50,7 +82,8 @@ export default function Kinetico({ fonts }: { fonts: string }) {
                   stagger: 0.045,
                 })
                 .from(`.${s.badge}`, { scale: 0, rotation: -120, duration: 0.9, ease: "back.out(2)" }, "-=0.4")
-                .from(`.${s.heroBar} > *`, { y: 30, autoAlpha: 0, stagger: 0.06, duration: 0.6, ease: "power3.out" }, "<0.1"),
+                .from(`.${s.heroBar} > *`, { y: 30, autoAlpha: 0, stagger: 0.06, duration: 0.6, ease: "power3.out" }, "<0.1")
+                .call(() => activarNombre(self.chars)),
           });
 
           const track = root.current!.querySelector(`.${s.marqueeTrack}`);
@@ -213,6 +246,7 @@ export default function Kinetico({ fonts }: { fonts: string }) {
           zona.addEventListener("pointermove", atraer);
           zona.addEventListener("pointerleave", soltar);
           return () => {
+            quitarNombre.forEach((fn) => fn());
             limpiezas.forEach((fn) => fn());
             zona.removeEventListener("pointermove", atraer);
             zona.removeEventListener("pointerleave", soltar);
