@@ -37,12 +37,6 @@ export const stack = {
   otros: ["WordPress", "WooCommerce", "Odoo", "Sass", "Python", "Java", "Git"],
 };
 
-export const servicios = [
-  { titulo: "Sitios y landings", desc: "Diseño e implementación de sitios rápidos, accesibles y fáciles de administrar." },
-  { titulo: "Aplicaciones web", desc: "Front-end en React/Next.js y APIs en NestJS, de la idea a producción." },
-  { titulo: "E-commerce", desc: "Tiendas en WooCommerce o a medida, con integraciones custom de pagos, envíos y ERP." },
-  { titulo: "Mantenimiento", desc: "Deploy, performance, seguridad y evolución de sitios existentes." },
-];
 
 export type TipoDeWeb = {
   nombre: string;

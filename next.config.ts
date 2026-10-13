@@ -1,28 +1,8 @@
-// next.config.js
-import type { NextConfig } from 'next'
-import type { Configuration } from 'webpack'
+import path from "node:path";
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['locomotive-scroll'],
-  turbopack: {
-    resolveAlias: {
-      'locomotive-scroll': 'locomotive-scroll/dist/locomotive-scroll.esm.js',
-    },
-  },
-  webpack: (config: Configuration) => {
-    if (!config.resolve) {
-      config.resolve = {};
-    }
-    if (!config.resolve.alias) {
-      config.resolve.alias = {};
-    }
-    
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      'locomotive-scroll': 'locomotive-scroll/dist/locomotive-scroll.esm.js',
-    };
-    return config;
-  },
-}
+  turbopack: { root: path.join(__dirname) },
+};
 
-module.exports = nextConfig
+export default nextConfig;
