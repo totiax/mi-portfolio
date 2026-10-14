@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { perfil, proyectos, stack, tiposDeWeb } from "@/data/portfolio";
+import { labModos, perfil, proyectos, stack, tiposDeWeb } from "@/data/portfolio";
 import s from "./portfolio.module.scss";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
@@ -172,6 +172,28 @@ export default function Portfolio() {
             scrollTrigger: { trigger: `.${s.tiposList}`, start: "top 80%" },
           });
 
+          SplitText.create(`.${s.labTitle}`, {
+            type: "chars",
+            mask: "chars",
+            onSplit: (self) =>
+              gsap.from(self.chars, {
+                yPercent: 110,
+                duration: 0.8,
+                ease: "power4.out",
+                stagger: 0.04,
+                scrollTrigger: { trigger: self.elements[0], start: "top 85%" },
+              }),
+          });
+
+          gsap.from(`.${s.labModo}`, {
+            y: 60,
+            autoAlpha: 0,
+            duration: 0.9,
+            ease: "expo.out",
+            stagger: 0.12,
+            scrollTrigger: { trigger: `.${s.labModos}`, start: "top 85%" },
+          });
+
           SplitText.create(`.${s.ctaTitle}`, {
             type: "chars",
             onSplit: (self) =>
@@ -306,6 +328,7 @@ export default function Portfolio() {
           <a href="#trabajo">Trabajo</a>
           <a href="#servicios">Servicios</a>
           <a href="#perfil">Perfil</a>
+          <a href={perfil.lab} target="_blank" rel="noopener noreferrer">Lab ↗</a>
           <a href="#contacto" className={s.navCta}>Hablemos</a>
         </nav>
       </header>
@@ -455,6 +478,26 @@ export default function Portfolio() {
           </div>
         ))}
       </div>
+
+      <section id="lab" className={s.lab}>
+        <span className={s.labAst} aria-hidden="true">✳</span>
+        <div className={s.labHead}>
+          <span className={s.kicker}>Proyecto propio</span>
+          <h2 className={s.labTitle}>M<span>✳</span>S LAB</h2>
+          <p>Mi laboratorio: herramientas de IA que generan y una galería de diseño web que marca tendencia. Dos modos en un mismo lugar.</p>
+        </div>
+        <div className={s.labModos}>
+          {labModos.map((m) => (
+            <a key={m.nombre} href={`${perfil.lab}${m.ruta}`} target="_blank" rel="noopener noreferrer" className={`${s.labModo} ${m.nombre === "IA" ? s.labIa : s.labDesign}`}>
+              <span className={s.labEtiqueta}>{m.etiqueta}</span>
+              <span className={s.labNombre}>{m.nombre}</span>
+              <span className={s.labTexto}>{m.texto}</span>
+              <span className={s.labIr}>Entrar ↗</span>
+            </a>
+          ))}
+        </div>
+        <a href={perfil.lab} target="_blank" rel="noopener noreferrer" className={s.labCta}>Visitar M✳S LAB ↗</a>
+      </section>
 
       <footer id="contacto" className={s.contact}>
         <h2 className={s.ctaTitle}>¿Hablamos?</h2>

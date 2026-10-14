@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Anton, Bricolage_Grotesque } from "next/font/google";
+import { Anton, Bricolage_Grotesque, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 const display = Anton({ subsets: ["latin"], weight: "400", variable: "--f-display" });
 const sans = Bricolage_Grotesque({ subsets: ["latin"], variable: "--f-sans" });
+const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: "italic", variable: "--f-serif" });
 
 const titulo = "Matias Skuarok — Desarrollador Full-Stack";
 const descripcion =
@@ -27,7 +28,7 @@ export const viewport: Viewport = { themeColor: "#16161a" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${display.variable} ${sans.variable}`}>
+    <html lang="es" className={`${display.variable} ${sans.variable} ${serif.variable}`}>
       <body>{children}</body>
     </html>
   );

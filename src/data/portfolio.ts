@@ -9,6 +9,7 @@ export const perfil = {
   cv: "/cv/desarrolladorFullStack-dev.pdf",
   github: "https://github.com/totiax",
   linkedin: "https://www.linkedin.com/in/matias-skuarok/",
+  lab: "https://ms-lab-tau.vercel.app",
   stats: [
     { valor: 4, sufijo: "+", label: "años de experiencia" },
     { valor: 100, sufijo: "+", label: "proyectos entregados" },
@@ -185,4 +186,9 @@ export const tiposDeWeb: TipoDeWeb[] = [
     modalidad: "Diagnóstico inicial, implementación por flujo y abono de monitoreo.",
     ejemplos: [],
   },
+];
+
+export const labModos = [
+  { nombre: "IA", etiqueta: "Repos + prompts", texto: "Herramientas abiertas que generan imagen, video, audio y código, cada una con prompts listos para usar con Claude o Gemini.", ruta: "/ia" },
+  { nombre: "Design", etiqueta: "Galería curada", texto: "Las webs que marcan tendencia, filtradas por rubro, con su paleta de colores medida y link a la original.", ruta: "/design" },
 ];
