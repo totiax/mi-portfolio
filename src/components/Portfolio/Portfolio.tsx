@@ -488,7 +488,7 @@ export default function Portfolio() {
         </div>
         <div className={s.labModos}>
           {labModos.map((m) => (
-            <a key={m.nombre} href={`${perfil.lab}${m.ruta}`} target="_blank" rel="noopener noreferrer" className={`${s.labModo} ${m.nombre === "IA" ? s.labIa : s.labDesign}`}>
+            <a key={m.nombre} href={perfil.lab} target="_blank" rel="noopener noreferrer" className={`${s.labModo} ${m.nombre === "IA" ? s.labIa : s.labDesign}`}>
               <span className={s.labEtiqueta}>{m.etiqueta}</span>
               <span className={s.labNombre}>{m.nombre}</span>
               <span className={s.labTexto}>{m.texto}</span>

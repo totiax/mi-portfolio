@@ -189,6 +189,6 @@ export const tiposDeWeb: TipoDeWeb[] = [
 ];
 
 export const labModos = [
-  { nombre: "IA", etiqueta: "Repos + prompts", texto: "Herramientas abiertas que generan imagen, video, audio y código, cada una con prompts listos para usar con Claude o Gemini.", ruta: "/ia" },
-  { nombre: "Design", etiqueta: "Galería curada", texto: "Las webs que marcan tendencia, filtradas por rubro, con su paleta de colores medida y link a la original.", ruta: "/design" },
+  { nombre: "IA", etiqueta: "Repos + prompts", texto: "Herramientas abiertas que generan imagen, video, audio y código, cada una con prompts listos para usar con Claude o Gemini." },
+  { nombre: "Design", etiqueta: "Galería curada", texto: "Las webs que marcan tendencia, filtradas por rubro, con su paleta de colores medida y link a la original." },
 ];
