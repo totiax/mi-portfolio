@@ -521,39 +521,69 @@
   margin-top: 0.75rem;
   span { color: var(--accent); }
 }
-.labModos {
+.labCard {
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  border-radius: 28px;
+  overflow: hidden;
+  transition: translate 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  &:hover { translate: 0 -6px; box-shadow: 0 40px 80px -40px rgba(198, 255, 0, 0.35); }
+  &:hover .labCentro { scale: 1.08; }
+  &:hover .labCentroAst { rotate: 90deg; }
+  &:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 
   @media (max-width: 760px) { grid-template-columns: 1fr; }
 }
 .labModo {
   position: relative;
-  min-height: 300px;
-  border-radius: 24px;
+  min-height: 340px;
   padding: clamp(1.5rem, 3vw, 2.25rem);
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
-  transition: translate 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s;
-  &:hover { translate: 0 -6px; }
-  &:hover .labIr { transform: translateX(6px); }
 }
 .labIa {
   background: #0e0f16;
-  border: 1.5px solid #2c2c33;
-  &:hover { border-color: var(--accent); box-shadow: 0 30px 60px -30px rgba(198, 255, 0, 0.35); }
   .labNombre { font-family: var(--f-display), sans-serif; color: var(--accent); }
-  .labIr { background: var(--accent); color: var(--dark); }
 }
 .labDesign {
   background: #f6f5f3;
   color: #181416;
-  &:hover { box-shadow: 0 30px 60px -30px rgba(246, 245, 243, 0.4); }
+  align-items: flex-end;
+  text-align: right;
   .labNombre { font-family: var(--f-serif), serif; font-style: italic; }
-  .labIr { background: #181416; color: #fff; }
+
+  @media (max-width: 760px) { align-items: flex-start; text-align: left; }
+}
+.labCentro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--dark);
+  box-shadow: 0 0 0 8px rgba(8, 8, 10, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: scale 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+
+  @media (max-width: 760px) { width: 104px; height: 104px; }
+}
+.labCentroAst {
+  font-size: 2.6rem;
+  line-height: 1;
+  transition: rotate 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .labEtiqueta {
   align-self: flex-start;
@@ -568,26 +598,7 @@
 }
 .labNombre { font-size: clamp(4rem, 9vw, 7.5rem); line-height: 0.9; }
 .labTexto { font-size: 1.05rem; line-height: 1.5; max-width: 38ch; opacity: 0.85; }
-.labIr {
-  margin-top: auto;
-  align-self: flex-start;
-  border-radius: 999px;
-  padding: 0.7rem 1.3rem;
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.labCta {
-  position: relative;
-  align-self: flex-start;
-  border: 2px solid var(--light);
-  border-radius: 999px;
-  padding: 0.9rem 1.6rem;
-  font-weight: 700;
-  transition: background-color 0.3s, color 0.3s;
-  &:hover { background: var(--light); color: var(--dark); }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .labAst { animation: none; }
+  .labCard, .labCentro, .labCentroAst { transition: none; }
 }

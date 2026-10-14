@@ -191,7 +191,7 @@ export default function Portfolio() {
             duration: 0.9,
             ease: "expo.out",
             stagger: 0.12,
-            scrollTrigger: { trigger: `.${s.labModos}`, start: "top 85%" },
+            scrollTrigger: { trigger: `.${s.labCard}`, start: "top 85%" },
           });
 
           SplitText.create(`.${s.ctaTitle}`, {
@@ -486,17 +486,19 @@ export default function Portfolio() {
           <h2 className={s.labTitle}>M<span>✳</span>S LAB</h2>
           <p>Mi laboratorio: herramientas de IA que generan y una galería de diseño web que marca tendencia. Dos modos en un mismo lugar.</p>
         </div>
-        <div className={s.labModos}>
+        <a href={perfil.lab} target="_blank" rel="noopener noreferrer" className={s.labCard} aria-label="Entrar a M✳S LAB: elegí IA o Design">
           {labModos.map((m) => (
-            <a key={m.nombre} href={perfil.lab} target="_blank" rel="noopener noreferrer" className={`${s.labModo} ${m.nombre === "IA" ? s.labIa : s.labDesign}`}>
+            <span key={m.nombre} className={`${s.labModo} ${m.nombre === "IA" ? s.labIa : s.labDesign}`}>
               <span className={s.labEtiqueta}>{m.etiqueta}</span>
               <span className={s.labNombre}>{m.nombre}</span>
               <span className={s.labTexto}>{m.texto}</span>
-              <span className={s.labIr}>Entrar ↗</span>
-            </a>
+            </span>
           ))}
-        </div>
-        <a href={perfil.lab} target="_blank" rel="noopener noreferrer" className={s.labCta}>Visitar M✳S LAB ↗</a>
+          <span className={s.labCentro} aria-hidden="true">
+            <span className={s.labCentroAst}>✳</span>
+            <span>Entrar</span>
+          </span>
+        </a>
       </section>
 
       <footer id="contacto" className={s.contact}>
